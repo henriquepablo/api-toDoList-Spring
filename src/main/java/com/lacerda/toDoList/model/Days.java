@@ -2,11 +2,13 @@ package com.lacerda.toDoList.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name="days")
 public class Days implements Serializable{	
@@ -17,6 +19,9 @@ public class Days implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Date days;
+	
+	@OneToMany(mappedBy = "days")
+	private List<Tasks> tasks;
 	
 	public Days() {
 		
