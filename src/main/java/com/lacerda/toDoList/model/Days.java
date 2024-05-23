@@ -1,7 +1,7 @@
 package com.lacerda.toDoList.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -18,7 +18,7 @@ public class Days implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date days;
+	private LocalDate days;
 	
 	@OneToMany(mappedBy = "days")
 	private List<Tasks> tasks;
@@ -27,7 +27,7 @@ public class Days implements Serializable{
 		
 	}
 
-	public Days(Long id, Date days) {
+	public Days(Long id, LocalDate days) {
 		this.id = id;
 		this.days = days;
 	}
@@ -40,11 +40,11 @@ public class Days implements Serializable{
 		this.id = id;
 	}
 
-	public Date getDays() {
+	public LocalDate getDays() {
 		return days;
 	}
 
-	public void setDays(Date days) {
+	public void setDays(LocalDate days) {
 		this.days = days;
 	}
 

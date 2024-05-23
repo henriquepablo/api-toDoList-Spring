@@ -24,12 +24,6 @@ public class Tasks {
 		
 	}
 
-	public Tasks(Days days, Long id, String taks) {
-		this.days = days;
-		this.id = id;
-		this.taks = taks;
-	}
-
 	public Days getDays() {
 		return days;
 	}
