@@ -4,16 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
-@Entity(name = "taks")
+@Entity(name = "tasks")
 public class Tasks {
-	
-
-	@ManyToOne
-	@JoinColumn(name = "day_id")
-	private Days days;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,14 +15,6 @@ public class Tasks {
 	
 	public Tasks() {
 		
-	}
-
-	public Days getDays() {
-		return days;
-	}
-
-	public void setDays(Days days) {
-		this.days = days;
 	}
 
 	public Long getId() {
@@ -50,9 +35,8 @@ public class Tasks {
 
 	@Override
 	public String toString() {
-		return "Tasks [days=" + days + ", id=" + id + ", taks=" + taks + "]";
+		return "Tasks [days=" + ", id=" + id + ", taks=" + taks + "]";
 	}
-	
-	
+
 	
 }
