@@ -26,4 +26,10 @@ public class TasksService {
 	}
 	
 	
+	public void delete(Long id) throws Exception {
+		Tasks tasks = tasksRepository.findById(id).orElseThrow(() -> new Exception("Não encontrado"));
+		
+		tasksRepository.delete(tasks);
+	}
+	
 }
