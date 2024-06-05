@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.persistence.Id;
 
 @Entity
@@ -21,7 +22,7 @@ public class User {
 	@Column(name = "name", length = 255)
 	private String nome;
 	
-	@Column(name = "email", length = 255)
+	@Column(name = "email", length = 255, unique = true)
 	private String email;
 	
 	@Column(name = "password", length = 255)
