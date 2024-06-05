@@ -60,7 +60,7 @@ public class TokenService {
 	
 	public Instant generateExpirationDate() {
 		// deixa o token válido por 2 horas
-		return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("GMT-3"));
+		return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-3"));
 	}
 	
 }
