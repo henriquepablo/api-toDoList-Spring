@@ -45,7 +45,7 @@ public class UserController {
 			String token = tokenService.generateToken(user);
 			
 			// responde com as informações geradas
-			return ResponseEntity.ok(new ResponseDTO(user.getNome(), token, user.getEmail()));
+			return ResponseEntity.ok(new ResponseDTO(user.getId(), user.getNome(), token, user.getEmail()));
 		}
 		return ResponseEntity.badRequest().build();
 	}
@@ -70,7 +70,7 @@ public class UserController {
 			// gera o token
 			String token = tokenService.generateToken(newUser);
 			
-			return ResponseEntity.ok(new ResponseDTO(newUser.getNome(), token, newUser.getEmail()));
+			return ResponseEntity.ok(new ResponseDTO(newUser.getId(), newUser.getNome(), token, newUser.getEmail()));
 			
 		}
 		return ResponseEntity.badRequest().build();
