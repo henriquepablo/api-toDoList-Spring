@@ -3,11 +3,14 @@ package com.lacerda.toDoList.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -75,4 +78,17 @@ public class UserController {
 		}
 		return ResponseEntity.badRequest().build();
 	}
+	
+	@GetMapping("/data")
+	public ResponseEntity<ResponseDTO> userDertails(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
+		String authHeader = token.replace("Bearer ", "");
+		
+		String userEmail = tokenService.validateToken(authHeader);
+		
+		User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new RuntimeException("User not found"));
+		
+		return ResponseEntity.ok(new ResponseDTO(user.getId(), user.getNome(), authHeader, user.getEmail()));
+		
+	}
+	
 }
