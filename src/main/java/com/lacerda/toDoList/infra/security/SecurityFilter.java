@@ -35,7 +35,7 @@ public class SecurityFilter extends OncePerRequestFilter{
 		String token = this.recoverToken(request);
 		// valida o token
 		String login = tokenService.validateToken(token);
-		
+
 		// verifica se o token é null
 		if (login != null) {
 			// recupera o usuário no db
@@ -49,6 +49,9 @@ public class SecurityFilter extends OncePerRequestFilter{
 			
 			//adiciona o usuário no contexto do spring security
 			SecurityContextHolder.getContext().setAuthentication(authentication);
+		}
+		else {
+			System.out.println("Token inválido");
 		}
 		
 		filterChain.doFilter(request, response);
