@@ -1,5 +1,6 @@
 package com.lacerda.toDoList.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class TasksService {
 		
 		return tasksRepository.findTaskByUserId(id);
 
+	}
+	
+	public List<Tasks> findTaskByDate(LocalDate date) {
+		return tasksRepository.findTaskByData(date);
 	}
 	
 	public Tasks create(Tasks tasks) {

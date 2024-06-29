@@ -1,5 +1,6 @@
 package com.lacerda.toDoList.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lacerda.toDoList.model.Date;
 import com.lacerda.toDoList.model.Tasks;
 import com.lacerda.toDoList.repositories.UserRepository;
 import com.lacerda.toDoList.service.TasksService;
@@ -43,6 +45,12 @@ public class TasksController {
 		  taksService.create(tasks);
 		  
 		return tasks;
+	}
+	
+	@PostMapping("/find/task/date")
+	public List<Tasks> findTaskByDate(@RequestBody Date date) {
+		return taksService.findTaskByDate(date.getDate());
+		 
 	}
 
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
